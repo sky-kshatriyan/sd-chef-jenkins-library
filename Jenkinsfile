@@ -5,15 +5,6 @@ pipeline {
       parallel {
         stage('Check ChefDK') {
           steps {
-            if(isUnix()){
-              sh '''
-              # Make sure ChefDK is installed
-              if [ ! $(which chef) ]; then
-                echo "ChefDK is missing! Please visit https://downloads.chef.io."
-                exit 1
-              fi
-              '''
-            }else{
               powershell ''' 
                 $ChefDK = (which javaa)
                 if ($ChefDK) {
@@ -22,8 +13,26 @@ pipeline {
                     Write-Host "ChefDK is missing! Please visit https://downloads.chef.io."
                     Exit 1
                 }
-              '''
-            }
+              '''            
+            // if(isUnix()){
+            //   sh '''
+            //   # Make sure ChefDK is installed
+            //   if [ ! $(which chef) ]; then
+            //     echo "ChefDK is missing! Please visit https://downloads.chef.io."
+            //     exit 1
+            //   fi
+            //   '''
+            // }else{
+            //   powershell ''' 
+            //     $ChefDK = (which javaa)
+            //     if ($ChefDK) {
+            //         Write-Host "Chef is Installed"
+            //     }else {
+            //         Write-Host "ChefDK is missing! Please visit https://downloads.chef.io."
+            //         Exit 1
+            //     }
+            //   '''
+            // }
           }
         }
         stage('Check the chef_repo') {
