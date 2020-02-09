@@ -105,9 +105,9 @@ pipeline {
     }
     stage('Verify Ruby files') {
       steps {
-          // powershell '''
+          powershell '''
           //   chef exec rubocop utilities/. --chef-license accept
-          // '''        
+           '''        
         // if(isUnix()){
         //   sh 'chef exec rubocop utilities/.'
         // }else{
