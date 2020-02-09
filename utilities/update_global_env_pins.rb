@@ -7,11 +7,11 @@ options = { folder: nil, knife: nil }
 
 parser = OptionParser.new do |opts|
   opts.banner = 'Usage: update_global_env_pins.rb [options]'
-  opts.on('-f', '--folder D:\var\lib\jenkins\chef_automation', 'Folder Name') do |folder|
+  opts.on('-f', '--folder /path/to/my/folder', 'Folder Name') do |folder|
     options[:folder] = folder
   end
 
-  opts.on('-k', '--knife D:\var\lib\jenkins\chef_repo\.chef\knife.rb', 'Knife Path') do |knife|
+  opts.on('-k', '--knife /path/to/my/knife.rb', 'Knife Path') do |knife|
     options[:knife] = knife
   end
 
