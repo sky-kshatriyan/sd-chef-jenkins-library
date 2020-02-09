@@ -103,13 +103,13 @@ pipeline {
         }
       }
     }
-    // stage('Verify Ruby files') {
-    //   steps {
-    //     powershell '''
-    //      chef exec rubocop utilities/. --chef-license accept
-    //       '''
-    //   }
-    // }
+    stage('Verify Ruby files') {
+      steps {
+        powershell '''
+         chef exec --chef-license=accept rubocop utilities/.
+          '''
+      }
+    }
     stage('Stage Utilities') {
       steps {
           powershell '''
