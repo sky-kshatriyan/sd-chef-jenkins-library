@@ -37,26 +37,25 @@ pipeline {
         }
         stage('Check the chef_repo') {
           steps {
-              powershell '''
-                if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef")) {
-                    mkdir -p "D:\\var\\lib\\jenkins\\chef_repo\\.chef"
-                }
-                if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\cookbooks")) {
-                    mkdir -p "D:\\var\\lib\\jenkins\\chef_repo\\cookbooks"
-                }
-                if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\environments")) {
-                    mkdir -p "D:\\var\\lib\\jenkins\\chef_repo\\environments"
-                }
-                if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef\\knife.rb")) {
-                    Write-Host "WARNING"
-                    Write-Host "We are creating empty files so the setup can proceed."
-                    Write-Host "Replace the contents of /var/lib/jenkins/chef_repo/.chef/knife.rb with your information"    
-                    New-Item -ItemType File -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef" -Name 'knife.rb'
-                }
-                if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef\\client.pem")) {
-                    New-Item -ItemType File -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef" -Name 'client.pem'
-                }
-              '''             
+            powershell label: 'CHEF REPO CHECK', script: '''                
+                            if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef")) {
+                                mkdir -p "D:\\var\\lib\\jenkins\\chef_repo\\.chef"
+                            }
+                            if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\cookbooks")) {
+                                mkdir -p "D:\\var\\lib\\jenkins\\chef_repo\\cookbooks"
+                            }
+                            if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\environments")) {
+                                mkdir -p "D:\\var\\lib\\jenkins\\chef_repo\\environments"
+                            }
+                            if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef\\knife.rb")) {
+                                Write-Host "WARNING"
+                                Write-Host "We are creating empty files so the setup can proceed."
+                                Write-Host "Replace the contents of /var/lib/jenkins/chef_repo/.chef/knife.rb with your information"    
+                                New-Item -ItemType File -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef" -Name \'knife.rb\'
+                            }
+                            if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef\\client.pem")) {
+                                New-Item -ItemType File -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef" -Name \'client.pem\'
+                            }'''
             // if(isUnix()){
             //   sh '''
             //   if [ ! -d "/var/lib/jenkins/chef_repo/.chef" ]; then
@@ -106,9 +105,9 @@ pipeline {
     }
     stage('Verify Ruby files') {
       steps {
-          powershell '''
-            chef exec rubocop utilities/. --chef-license accept
-          '''        
+          // powershell '''
+          //   chef exec rubocop utilities/. --chef-license accept
+          // '''        
         // if(isUnix()){
         //   sh 'chef exec rubocop utilities/.'
         // }else{
