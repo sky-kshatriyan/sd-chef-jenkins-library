@@ -5,3 +5,5 @@ Metrics/BlockLength:
   Enabled: false
 Style/ConditionalAssignment:
   Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false  
