@@ -53,7 +53,7 @@ pipeline {
           powershell '''
             if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_automation")) {
                 mkdir -p "D:\\var\\lib\\jenkins\\chef_automation"
-                cp utilities\* -Destination "D:\\var\\lib\\jenkins\\chef_automation"  
+                cp utilities\\* -Destination "D:\\var\\lib\\jenkins\\chef_automation"  
             }          
           '''        
         // if(isUnix()){
