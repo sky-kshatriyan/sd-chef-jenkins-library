@@ -88,7 +88,7 @@ pipeline {
     }
     stage('Stage Utilities') {
       steps {
-        if(){
+        if(isUnix()){
           sh '''
           if [ ! -d "/var/lib/jenkins/chef_automation" ]; then
             mkdir -p /var/lib/jenkins/chef_automation
