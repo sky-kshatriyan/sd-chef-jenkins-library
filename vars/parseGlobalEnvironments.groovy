@@ -4,20 +4,25 @@ def call(){
     stages {
       stage('Stage Environments') {
         steps {
-          if(isUnix()){
-            sh '''
-            if [ ! -d "/var/lib/jenkins/chef_automation/global_envs" ]; then
-              mkdir -p /var/lib/jenkins/chef_automation/global_envs
-            fi
-            cp * /var/lib/jenkins/chef_automation/global_envs/
-            '''
-          }else{
             powershell '''
               if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_automation\\global_envs")) {
                     mkdir -p "D:\\var\\lib\\jenkins\\chef_automation\\global_envs"
                 }
-            '''
-          }
+            '''          
+          // if(isUnix()){
+          //   sh '''
+          //   if [ ! -d "/var/lib/jenkins/chef_automation/global_envs" ]; then
+          //     mkdir -p /var/lib/jenkins/chef_automation/global_envs
+          //   fi
+          //   cp * /var/lib/jenkins/chef_automation/global_envs/
+          //   '''
+          // }else{
+          //   powershell '''
+          //     if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_automation\\global_envs")) {
+          //           mkdir -p "D:\\var\\lib\\jenkins\\chef_automation\\global_envs"
+          //       }
+          //   '''
+          // }
         }
       }
       stage('Publish Environments to Production') {
