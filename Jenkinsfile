@@ -6,7 +6,7 @@ pipeline {
         stage('Check ChefDK') {
           steps {
               powershell ''' 
-                $ChefDK = where java
+                $ChefDK = (Test-Path -Path 'C:\\tools\\opscode\\chefdk\\bin\\chef')
                 if ($ChefDK) {
                     Write-Host "Chef is Installed"
                 }else {
