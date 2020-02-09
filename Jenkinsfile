@@ -51,23 +51,23 @@ pipeline {
               '''              
             }else {
               powershell '''
-                if (!(Test-Path -Path "D:\var\lib\jenkins\chef_repo\.chef")) {
-                    mkdir -p "D:\var\lib\jenkins\chef_repo\.chef"
+                if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef")) {
+                    mkdir -p "D:\\var\\lib\\jenkins\\chef_repo\\.chef"
                 }
-                if (!(Test-Path -Path "D:\var\lib\jenkins\chef_repo\cookbooks")) {
-                    mkdir -p "D:\var\lib\jenkins\chef_repo\cookbooks"
+                if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\cookbooks")) {
+                    mkdir -p "D:\\var\\lib\\jenkins\\chef_repo\\cookbooks"
                 }
-                if (!(Test-Path -Path "D:\var\lib\jenkins\chef_repo\environments")) {
-                    mkdir -p "D:\var\lib\jenkins\chef_repo\environments"
+                if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\environments")) {
+                    mkdir -p "D:\\var\\lib\\jenkins\\chef_repo\\environments"
                 }
-                if (!(Test-Path -Path "D:\var\lib\jenkins\chef_repo\.chef\knife.rb")) {
+                if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef\\knife.rb")) {
                     Write-Host "WARNING"
                     Write-Host "We are creating empty files so the setup can proceed."
                     Write-Host "Replace the contents of /var/lib/jenkins/chef_repo/.chef/knife.rb with your information"    
-                    New-Item -ItemType File -Path "D:\var\lib\jenkins\chef_repo\.chef" -Name 'knife.rb'
+                    New-Item -ItemType File -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef" -Name 'knife.rb'
                 }
-                if (!(Test-Path -Path "D:\var\lib\jenkins\chef_repo\.chef\client.pem")) {
-                    New-Item -ItemType File -Path "D:\var\lib\jenkins\chef_repo\.chef" -Name 'client.pem'
+                if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef\\client.pem")) {
+                    New-Item -ItemType File -Path "D:\\var\\lib\\jenkins\\chef_repo\\.chef" -Name 'client.pem'
                 }
               '''                            
             }
@@ -97,8 +97,8 @@ pipeline {
           '''
         }else{
           powershell '''
-            if (!(Test-Path -Path "D:\var\lib\jenkins\chef_automation")) {
-                mkdir -p "D:\var\lib\jenkins\chef_automation'
+            if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_automation")) {
+                mkdir -p "D:\\var\\lib\\jenkins\\chef_automation'
             }          
           '''
         }
