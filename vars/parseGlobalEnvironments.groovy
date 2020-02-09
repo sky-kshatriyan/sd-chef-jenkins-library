@@ -13,8 +13,8 @@ def call(){
             '''
           }else{
             powershell '''
-              if (!(Test-Path -Path "D:\var\lib\jenkins\chef_automation\global_envs")) {
-                    mkdir -p "D:\var\lib\jenkins\chef_automation\global_envs"
+              if (!(Test-Path -Path "D:\\var\\lib\\jenkins\\chef_automation\\global_envs")) {
+                    mkdir -p "D:\\var\\lib\\jenkins\\chef_automation\\global_envs"
                 }
             '''
           }
@@ -24,7 +24,7 @@ def call(){
         steps {
           input 'Publish Enviornments to Production Chef Server?'
           powershell ''' 
-          chef exec ruby D:\var\lib\jenkins\chef_automation\update_global_env_pins.rb -k D:\var\lib\jenkins\chef_repo\.chef\knife.rb -f D:\var\lib\jenkins\chef_automation
+          chef exec ruby D:\\var\\lib\\jenkins\\chef_automation\\update_global_env_pins.rb -k D:\\var\\lib\\jenkins\\chef_repo\\.chef\\knife.rb -f D:\\var\\lib\\jenkins\\chef_automation
           '''
         }
       }
